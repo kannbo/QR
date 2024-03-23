@@ -1,0 +1,27 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
+<h4>URL</h4>
+<input id="URL"><br>
+<a class="button is-info load-b" id="CRTQR"><button><h4 class="fas fa-qrcode mr-2"></h4>QRコード生成</button></a>
+ <div id="QR" class="container m-4 is-justify-content-center is-flex">
+</div>
+  <script>
+    // 読込後
+    window.addEventListener('load',function() {  
+      // 入力欄の要素を取得
+      var inp01 = document.getElementById('URL');
+      // ボタンの要素を取得
+      var bnt01 = document.getElementById('CRTQR');
+      // ボタン クリック時の処理を追加
+      bnt01.onclick = function(){
+        // QRコードの出力先をクリア
+        document.getElementById('QR').textContent = '';
+        // QRコード作成
+        var qrcode = new QRCode('QR', {
+          text:  inp01.value,
+          width: 128,
+          height: 128,
+          correctLevel : QRCode.CorrectLevel.H
+        });  
+      }      
+    });
+  </script>
